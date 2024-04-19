@@ -1,0 +1,9 @@
+body{
+    font-family: 'Vazirmatn';
+    overflow-x: hidden !important;
+    overflow-y:auto;
+    background-color: black;
+} 
+div#root {
+    background-color: black;
+}

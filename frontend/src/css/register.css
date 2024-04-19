@@ -1,0 +1,111 @@
+.register-form{
+    margin-top: 30px;
+    width: 100%;
+    margin-top: 55px;
+}
+.error-form-register{
+  font-size: smaller;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #db0e0e;
+  margin-bottom: 20px;
+}
+.register-title {
+    font-weight: bold;
+    font-family: none;
+    margin-left: 21px;
+    color: #bbbbbb;
+    font-size: 16px;
+}
+.register-btn{
+    background-color: #ffd461;
+    color: black;
+    padding: 3px;
+    border: none; 
+    border-radius: 3px;
+    margin-top:5px ;
+    height: 32px;
+}
+.register-data {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 40px);
+    align-content: center;
+    padding-bottom: 20px;
+}
+.small-margin{
+    margin-bottom: 3px;
+}
+.unlinke-decoration{
+    text-decoration: none;
+}
+.flex-row{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.small-font{
+    font-size: small;
+}
+.flex-column{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.create-account{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-style: italic;
+    font-size: 15px;
+    margin: 10px;
+}
+.register-input {
+    margin: 0 0 4px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    justify-content: center;
+}
+.show-pass {
+    width: 13px;
+    margin: 0 6px 0 3px;
+    position: absolute;
+    right: 0;
+    color: #666666;
+}
+.show-pass:hover {
+    cursor: pointer;
+}
+.input{
+    padding: 4px;
+    border: solid 1px rgb(58 58 58);
+    border-radius: 3px;
+    background-color: black;
+    color: #838282;
+}
+.input::-webkit-input-placeholder {
+     color: #383838;
+}
+.input:focus{
+    outline: solid 1px rgb(207, 183, 43); 
+    border-color: black;  
+}
+
+.input-base {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width:380px ){
+    .sign-form-container {
+        width: calc(100% / 1.1);
+        font-size: 14px;
+    }
+}

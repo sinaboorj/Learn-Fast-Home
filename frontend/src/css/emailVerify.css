@@ -1,0 +1,27 @@
+.contaner-verify{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.verification-img{
+    border: none;
+    outline: none;
+    padding: 20px 0;
+    border-radius: 20px;
+    width: 100px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+a.verifyLogin {
+    background: #15a763;
+    padding: 5px 35px;
+    margin-top: 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    border-radius: 15px;
+}

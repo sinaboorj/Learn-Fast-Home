@@ -1,0 +1,48 @@
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: black;
+    height: 52px;
+    padding: 5px;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(241, 241, 241, 0.637);
+    border-bottom: solid 1px #0e0e0e;
+}
+
+div.main-nav li{
+    list-style-type: none;
+}
+.nav-right , .nav-left , .nav-center{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+}
+.language {
+    height: 15px;
+    width: 25px;
+    cursor: pointer;
+}
+.nav-link{
+    margin: 0 5px 0 ;
+    color: rgba(241, 241, 241, 0.637);
+}
+
+.nav-link:hover{
+    color: #ffe261;
+}
+a.nav-link.login-item {
+    border: solid 1px #484848;
+    border-radius: 5px;
+    padding: 3px 6px;
+    font-size: 14px;
+}
+.nav-logo {
+    border-radius: 50%;
+    padding: 4px;
+    box-shadow:  0px 0px 10px rgba(143, 143, 143, 0.74);
+}

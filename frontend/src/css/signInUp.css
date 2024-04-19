@@ -1,0 +1,43 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.sign-form-container{
+    width: 365px;
+    position: relative;
+}
+.user-sign{
+    display: flex;
+    justify-content: space-around;
+    font-family: auto;
+    margin-top: 15px;
+    font-weight: bold;
+    width: 90%;
+    border-bottom: solid 1px rgb(62 62 62);
+}
+.sign-form{
+    display: flex;
+    border-radius: 5px;
+    padding-top: 5px;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px #282828;
+}
+.sign:hover{
+    cursor:pointer;
+}
+.user-add-msg{
+    border-radius: 3px;
+    margin: auto;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 5px;
+}

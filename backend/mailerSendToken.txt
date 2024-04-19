@@ -1,0 +1,3 @@
+mailerSend Token Site:
+
+MAILERSEND_API_KEY="mlsn.6cf8db71deefc793a8e08a708a5f22ffdc967baa831f6c37602493037b136524"
