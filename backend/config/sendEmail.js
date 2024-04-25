@@ -20,10 +20,10 @@ const sendEmail = async (email, mailSubject, text) => {
 			html: text,
 		};
 
-		await transporter.sendMail(mailOptions)
-		return { sendingMsg: true, title: 'Email sent successfully!', msg: 'An Email sent to your account , please verify' };
+		await transporter.sendMail(mailOpt.ions)
+		return { sendingEmail: true, title: 'Email sent successfully!', msg: 'An Email sent to your account , please verify' };
 	} catch (error) {
-		return { sendingMsg: false, title: 'Error sending email!', msg: error.message };
+		return { sendingEmail: false, title: 'Error sending email!', msg: error.message };
 	}
 };
 

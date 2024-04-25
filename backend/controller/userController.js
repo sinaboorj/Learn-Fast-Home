@@ -4,7 +4,6 @@ import _ from 'lodash';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import trycatchHandler from '../config/trycatchHandler.js';
-import appErrors from '../config/appErrors.js';
 import dotenv from 'dotenv';
 import randomString from 'randomstring'
 import sendEmail from '../config/sendEmail.js';
@@ -16,15 +15,15 @@ dotenv.config();
 const register = trycatchHandler(async (req, res, next) => {
     let newUser = []
     const schema = {
-        email: Joi.string().email().required().messages({ "string.email": "Email: Email Is Wrong." }),
-        password: Joi.string().min(6).max(100).required().messages({ "string.min": "Password: At Least 6 Character." }),
+        email: Joi.string().email().required().messages({ "string.email": "Email is wrong." }),
+        password: Joi.string().min(6).max(100).required().messages({ "string.min": "Password must be at least 6 characters" }),
     };
-  
+
     const datavalidResult = Joi.object(schema).validate(req.body); // اعتبارسنجی داده‌های ورودی
     if (datavalidResult.error) throw datavalidResult.error;
 
     const chechEmail = await userModel.getByEmail(req.body.email); // بررسی وجود ایمیل قبلی و وضعیت تایید کاربر
-    if (chechEmail && chechEmail.verified === 1) throw new appErrors(102, 'User Already Registered', 400);
+    if (chechEmail && chechEmail.verified === 1) return res.status(400).send({ sendingEmail: false, title: 'Error', msg: 'This user Already Registered' });
     
     //const salt = await bcrypt.genSalt(number(process.env.SALT)); // ايمن تر كردن رمز
     const hashPassword = await bcrypt.hash(req.body.password, 10); // رمزنگاری رمز عبور
@@ -35,8 +34,8 @@ const register = trycatchHandler(async (req, res, next) => {
         newUser = await userModel.insertUser(req.body.email, hashPassword, randomToken, verified); // افزودن کاربر جدید
     }
     if (chechEmail && chechEmail.verified === 0) { // ارسال توكن جديد براي كاربر
-        newUser = await userModel.updateToken(req.body.email ,randomToken)
-    } 
+        newUser = await userModel.updateToken(req.body.email, randomToken)
+    }
     
     let mailSubject = 'Email Verification'
     let url = `
@@ -69,13 +68,16 @@ const login = trycatchHandler(async (req, res, next) => {
     if (datavalidResult.error) throw datavalidResult.error
         
     const chechUser = await userModel.getByEmail(req.body.email)//چک کردن ایمیل
-    if (!chechUser) throw new appErrors(400, 'Email is invalid', 100)
-        
+    if (!chechUser) return res.status(404).send({ login: false ,type:'Email', title: 'Error', msg: 'Email is invalid' });
+    
+    if (chechUser.verified === 0) return res.send({ login: false , type:'Verify', title: 'Error', msg: 'Please verify your Email' }); // اگر ايميل وريفاي نشده بود
+
     const validPass = await bcrypt.compare(req.body.password, chechUser.password)// چک کردن پسورد
-    if (!validPass) throw new appErrors(400, 'Password is invalid', 100)
+    if (!validPass) return res.send({ login: false , type:'Password', title: 'Error', msg: 'Password is invalid' });
   
-    const token = jwt.sign({ id: chechUser.userID, verified:chechUser.verified }, process.env.LOGIN_PRIVATE_KEY)// ارسال توکن کاربر لاکین شده
-    res.send(token)
+    const token = jwt.sign({ login: true , token:chechUser.token }, process.env.LOGIN_PRIVATE_KEY)// ارسال توکن کاربر لاکین شده
+    res.header('Authorization',token).send(_.pick(chechUser,["userID","email"]) )
+   
 }
 )
 
@@ -85,7 +87,7 @@ const get = trycatchHandler(async (req, res, next) => {
     const userID = req.params.userID
 
     const result = await userModel.getById(userID)
-     if (!result) throw new appErrors(400, `UPDATE ERROR: userID(${userID}) Not Found.`, 101)
+    if (!result) return res.status(404).send({ update: false, title: 'Error', msg: `User Not Found.` });
   
      res.send(_.pick(result,["userID","email","firstName","lastName","country","phoneNumber","title","picName","url"]) )
 }
@@ -98,15 +100,18 @@ const verificationIDbyToken = trycatchHandler(async (req, res, next) => {
     const token = req.params.token
     
     const result = await userModel.getIDandToken(userID ,token) // بررسی آی دی و نوکن
-    if (!result) throw new appErrors(400, `Invalid link`, 102)
+    if (!result) return res.status(404).send({verification: false, title: 'Error', msg: 'Invalid link' });
 
     if (result.verified !== 1) {
         const verified = 1;
         const verify = await userModel.userVerify(userID, verified)
-        if (!verify) throw new appErrors(400, `Invalid verification`, 103)
-        res.send({ verifyStatue: true , msg:'Email verified successfully'})
+        if (!verify)  {
+            return  res.status(404).send({ verification: false, title: 'Error', msg: 'Invalid verification' })
+        }else {
+            return res.status(404).send({ verification: true , title: 'Successful', msg:'Email verified successfully'})
+        }
     } else {
-        res.send({ verifyStatue: false , msg:'This user already verified'})
+        return res.status(404).send({ verification: true,  title: 'Error' , msg:'This user already verified'})
     }
 }
 )
@@ -130,7 +135,7 @@ const updateUser = trycatchHandler(async (req, res, next) => {
     let url = ''
   
     const userDetail = await userModel.getById(userID)// براي پيدا كردن کاربر مورد نظر 
-    if (!userDetail) throw new appErrors(400, `UPDATE ERROR: userID(${userID}) Not Found.`, 104)
+    if (!userDetail) return res.status(404).send({update: false, title: 'Error', msg: 'User Not Found' });
 
     if (req.files !== null) {
         if (userDetail.picName !== null ) {
@@ -156,7 +161,7 @@ const updateUser = trycatchHandler(async (req, res, next) => {
     }
     
     const result = await userModel.updateUser(userID, firstName, lastName, country, phoneNumber, picName, url)
-     if (!result) throw new appErrors(400, `UPDATE ERROR: userID(${userID}) Not Found.`, 105)
+    if (!result) return res.status(404).send({update: false, title: 'Error', msg: 'User Not Found' });
 
     // const token= jwt.sign({id:result.userID},process.env.LOGIN_PRIVATE_KEY,{expiresIn: "7d"}) // رچیسنر و لاکین همرمان با ارسال یک توکن در قسمت هدر پاسخ
      res.send(_.pick(result,["userID","email","firstName","lastName","country","phoneNumber","picName","url"]) )

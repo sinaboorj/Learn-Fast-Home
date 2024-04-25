@@ -7,7 +7,7 @@ import About from "./pages/about";
 import Footer from "./components/footer";
 import UserContextProvider from "./context/userContext";
 import SignInUp from "./pages/users/signInUp";
-import EmailVerify from "./pages/users/emailVerify";
+import EmailVerify from "./pages/users/emailVerify"
 
 const App = () => {
   return (

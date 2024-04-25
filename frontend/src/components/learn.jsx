@@ -9,8 +9,8 @@ const Learn = () => {
                 <hr />
                 {/* <div className='img-backgrand'></div> */}
                 <div className='web-img'>
-                    <h3 style={{marginBottom:'20px'}}>Teaching programming from beginner to advanced</h3>
-                    <span style={{ fontStyle: 'italic', fontWeight: '600', marginBottom: '25px' }}>Fast and professional web programming training</span>
+                    <h5 style={{marginBottom:'20px'}}>Teaching programming from beginner to advanced</h5>
+                    <span style={{ fontStyle: 'italic', fontWeight: '500', marginBottom: '20px' }}>Fast and professional web programming training</span>
                 </div>
                 <div className='logo-format'>
                     <div className='learn'>

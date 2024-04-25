@@ -10,14 +10,18 @@
     width: 365px;
     position: relative;
 }
-.user-sign{
+.user-sign {
     display: flex;
     justify-content: space-around;
     font-family: auto;
     margin-top: 15px;
     font-weight: bold;
-    width: 90%;
-    border-bottom: solid 1px rgb(62 62 62);
+    width: 100%;
+    padding: 10px;
+    background-color: #262626;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    outline: solid 1px #262626;
 }
 .sign-form{
     display: flex;
@@ -25,7 +29,6 @@
     padding-top: 5px;
     flex-direction: column;
     align-items: center;
-    border: solid 1px #282828;
 }
 .sign:hover{
     cursor:pointer;

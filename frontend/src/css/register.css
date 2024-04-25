@@ -1,7 +1,10 @@
 .register-form{
-    margin-top: 30px;
     width: 100%;
-    margin-top: 55px;
+    border: solid 1px #333333;
+    padding-top: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 20px 0;
 }
 .error-form-register{
   font-size: smaller;
@@ -10,7 +13,7 @@
   justify-content: center;
   align-items: center;
   color: #db0e0e;
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .register-title {
     font-weight: bold;
@@ -26,14 +29,13 @@
     border: none; 
     border-radius: 3px;
     margin-top:5px ;
-    height: 32px;
+    height: 36px;
 }
 .register-data {
     display: flex;
     flex-direction: column;
     width: calc(100% - 40px);
     align-content: center;
-    padding-bottom: 20px;
 }
 .small-margin{
     margin-bottom: 3px;
@@ -89,7 +91,7 @@
     color: #838282;
 }
 .input::-webkit-input-placeholder {
-     color: #383838;
+     color: #4b4a4a;
 }
 .input:focus{
     outline: solid 1px rgb(207, 183, 43); 
@@ -101,6 +103,18 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
+}
+.login-btn {
+    background-color: #ffd461;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    height: 36px;
+}
+.forgotpass{
+    font-size: 13px;
+    padding: 10px 0px 13px;
+    text-align: end;
 }
 
 @media only screen and (max-width:380px ){

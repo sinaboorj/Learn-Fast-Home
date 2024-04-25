@@ -16,7 +16,7 @@
     font-size: 14px;
     cursor: pointer;
 }
-a.verifyLogin {
+a.verifylogin {
     background: #15a763;
     padding: 5px 35px;
     margin-top: 15px;
@@ -24,4 +24,5 @@ a.verifyLogin {
     color: black;
     font-weight: 600;
     border-radius: 15px;
+    text-indent: 0cap;
 }
