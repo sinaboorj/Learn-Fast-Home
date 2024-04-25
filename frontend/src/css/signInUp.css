@@ -44,3 +44,6 @@
     color: white;
     padding: 5px;
 }
+.sign{
+    transition: all 0.2s;
+}

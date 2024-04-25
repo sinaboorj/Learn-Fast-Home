@@ -31,8 +31,8 @@ div.main-nav li{
     margin: 0 5px 0 ;
     color: rgba(241, 241, 241, 0.637);
 }
-
 .nav-link:hover{
+    transition: all .6s;
     color: #ffe261;
 }
 a.nav-link.login-item {
