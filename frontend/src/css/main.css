@@ -1,9 +1,22 @@
 body{
-    font-family: 'Vazirmatn';
     overflow-x: hidden !important;
-    overflow-y:auto;
-    background-color: black;
+    box-sizing: border-box;
 } 
 div#root {
     background-color: black;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+::-webkit-scrollbar-track {
+    background: rgb(206, 206, 206); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #797979; 
+    cursor: pointer;
+  }

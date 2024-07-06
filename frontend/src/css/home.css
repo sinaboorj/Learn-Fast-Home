@@ -1,0 +1,80 @@
+
+.c-plan-container {
+    display: flex;
+    flex-direction: column;
+    color: #838383;
+    align-items: center;
+}
+.lf-logo{
+    margin: 15px 0 15px 0;
+}
+.logo-title{
+    font-weight: bold;
+    font-family: fangsong;
+    font-style: normal;
+    font-size: 14px;
+    background-color: #707da1;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+}
+.c-plan-pic{
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: solid 4px black;
+}
+.c-plan-pic-border {
+    border: solid 3px rgb(23 115 80 / 86%);
+    border-radius: 50%;
+    margin-bottom: 25px;
+}
+.logo-format {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+.logo-title .untitle{
+    font-family: fangsong;
+    font-style: normal;
+    font-size: medium;
+    font-weight: 200;
+}
+.h-line{
+    margin: 25px 0 25px 0;
+}
+.logo-format div div li{
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+.c-plan{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: calc(100vw / 3);
+    flex-grow: 1;
+}
+ul.home-items {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    align-items: flex-start;
+}
+li.c-plan-item {
+    display: list-item;
+    /* border: dotted 1px #4c4c4c; */
+    padding: 3px;
+    margin: 2px;
+}
+
+@media only screen and (max-width:550px) {
+    .logo-format {
+        flex-direction: column;
+    }
+} 

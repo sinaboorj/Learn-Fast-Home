@@ -1,0 +1,88 @@
+
+.person {
+    background: #acacac;
+    border-radius: 8px;
+    width: 85px;
+    height: 40px;
+    padding: 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #737373;
+    font-size: 13px;
+    cursor: pointer;
+    color: #000000;
+    font-weight: 500;
+}
+.v-line {
+    width: 2px;
+    height: 60px;
+    background-color: #626262;
+}
+.title-chart{
+    color: rgb(241 241 241 / 68%);
+    margin-bottom: 20px;
+   display: flex;
+   font-family: 'Vazir';
+}
+.managechart-chart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 1px 0px;
+    border: solid 1px #404040;
+    width: calc(100vw / 3 - 10px);
+    margin: -5px 5px;
+    background-color: #343333;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom-color: #343333;
+}
+.analysis-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 1px 15px;
+    border: solid 1px #404040;
+    width: calc(100vw / 3 - 10px);
+    background-color: #343333;
+    border-radius: 0px 0px 5px 5px;
+    border-top-color: #343333;
+}
+.hint{
+    background: rgb(111 110 108);
+    position: absolute;
+    border-radius: 5px;
+    padding: 4px;
+}
+.show-user-on-chart{
+    width: 128px;
+    top: 65px;
+    left: 65px;
+    position: absolute;
+    height: 166px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 2px;
+    z-index: 0;
+    font-size: .75rem;
+    flex-direction: column;
+    color: black;
+    font-weight: bold;
+}
+.show-pic-on-chart {
+    width: 85px;
+    height: 100px;
+    border-radius: 16%;
+    margin-bottom: 4px;
+    border: solid #4c4c4c 2px;
+    padding: 2px;
+    background: #929191;
+}
+.span.full-name {
+    text-align: center;
+}
+label.no-data {
+    text-align: center;
+}

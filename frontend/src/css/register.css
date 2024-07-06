@@ -22,15 +22,7 @@
     color: #bbbbbb;
     font-size: 16px;
 }
-.register-btn{
-    background-color: #ffd461;
-    color: black;
-    padding: 3px;
-    border: none; 
-    border-radius: 3px;
-    margin-top:5px ;
-    height: 36px;
-}
+
 .register-data {
     display: flex;
     flex-direction: column;
@@ -94,7 +86,7 @@
      color: #4b4a4a;
 }
 .input:focus{
-    outline: solid 1px rgb(207, 183, 43); 
+    outline: solid 1px #044ef5; 
     border-color: black;  
 }
 
@@ -105,10 +97,19 @@
     align-items: center;
 }
 .login-btn {
-    background-color: #ffd461;
+    background-color: #575859;
     color: black;
     border: none;
     border-radius: 3px;
+    height: 36px;
+}
+.register-btn{
+    background-color: #575859;
+    color: black;
+    padding: 3px;
+    border: none; 
+    border-radius: 3px;
+    margin-top:5px ;
     height: 36px;
 }
 .forgotpass{

@@ -1,19 +1,19 @@
 .footer{
     background-color: black;
-    margin-top: 20px;
+    margin: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 5px;
     font-size: 15px;
-    border-top: solid 1px #0e0e0e;
+    border-top: solid 1px #68686833;
 }
-.lf-footer{
+.insig-footer{
     border-radius: 50%;
-    margin: 20px;
-    box-shadow: 0px 0px 10px rgba(148, 147, 147, 0.54);
+    box-shadow: 0px 0px 10px blue;
     padding: 12px;
+    border: solid 2px blue;
 }
 .contact{
     color: rgba(241, 241, 241, 0.54);
@@ -28,21 +28,31 @@
 .unlink-color{
     color: rgba(241, 241, 241, 0.54);
 }
-.footer .zarei ul li{
-    font-size: 14px;
-}
-.footer .zarei ul li::marker{
-    color: #ffd461!important;
-    font-size: 16px;
+.planning-pic {
+    width: 60px;
+    margin: 10px;
 }
 .contact-us{
     margin-bottom: 3px;
-    font-size: 14px;
+    font-size: 12.5px;
 }
 .under-footer{
     text-align: center;
 }
-
+.about-sina{
+    text-decoration: none;
+    color: rgb(13 110 202);
+}
+.left-footer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    color: #616161;
+}
+.left-footer h6{
+    font-size: 14px;
+}
 
 @media only screen and (max-width:619px) {
     
@@ -52,4 +62,16 @@
     .contact {
         margin-bottom: 20px;
     }
+    .insig-footer{
+        display: none;
+    }
   } 
+  @media only screen and (max-width: 455px){
+
+    .contact-us {
+        font-size: 13px;
+    }
+    .planning-pic {
+        width: 160px;
+    }
+}

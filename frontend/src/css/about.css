@@ -1,0 +1,38 @@
+.about{
+    color: rgb(120 120 120);
+    text-align: justify;
+    padding: 0 200px;
+    font-size: 16px;
+    font-family: math;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.resume{
+    font-family: fangsong;
+    font-weight: bold;
+    font-size: 19px;
+    color: rgb(183 183 183);
+    margin-bottom: 15px;
+}
+img.resume-pic {
+    width: 116px;
+    border-radius: 50%;
+    border: solid 5px rgb(1 84 155);
+  margin-bottom: 25px;
+}
+.resume-pic{
+    border-radius: 5px;
+    width: 80%;
+}
+.resume-text-en{
+    margin-bottom: 30px;
+}
+.resume-text-fa{
+    margin-bottom: 20px;
+    direction: rtl;
+    font-family: system-ui;
+    font-size: 14px;
+}
