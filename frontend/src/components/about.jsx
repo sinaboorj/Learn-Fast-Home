@@ -1,12 +1,12 @@
 
-import '../css/about.css'
+import '../sass/about.scss'
 import sina from '../../public/sysImage/Sina.png'
 import { useContext } from 'react'
-import { LanguageContext } from '../context/languageContext';
 import Strings from '../helper/strings';
+import { PublicContext } from '../context/publicContext';
 
 const About = () => {
-    const { lang } = useContext(LanguageContext);
+    const { lang } = useContext(PublicContext);
     return (
         <>
             <br /><br /><br />

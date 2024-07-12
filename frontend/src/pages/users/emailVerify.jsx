@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import '../../css/emailVerify.css'
+import '../../sass/emailVerify.scss'
 import success from '/sysImage/success.png'
 import error from '/sysImage/warningSmall.png'
 import { Link, useParams } from 'react-router-dom'

@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
-import '../../css/chart.css'
+import '../../sass/chart.scss'
 import Strings from '../../helper/strings';
 import axios from 'axios';
 import { UserContext } from '../../context/userContext';
+import UserOnChart from '../users/userOnChart';
 
 const AnalysisChart = () => {
     const [showPersonDetail, setShowPersonDetail] = useState(false);
     const { headers } = useContext(UserContext);
     const [showUserOnChart, setShowUserOnChart] = useState(false)
+    const [error, setError] = useState(false)
 
     const showUserChart = async (level, No, unit) => {
         let level_No = {
@@ -21,7 +23,8 @@ const AnalysisChart = () => {
             setShowPersonDetail(users?.data)
             setShowUserOnChart(true)
         } catch (error) {
-            setShowUserOnChart(false)
+            setShowUserOnChart(true)
+            setError(true)
         }
     }
 
@@ -40,13 +43,7 @@ const AnalysisChart = () => {
                     className='person' >{Strings.Expert}
                 </div>
             </div>
-            {showUserOnChart && (
-                < div className="hint show-user-on-chart" >
-                    <img className="show-pic-on-chart" src={showPersonDetail?.url} alt="" />
-                    <span className='full-name'>{showPersonDetail?.firstName} { showPersonDetail?.lastName} </span>
-                    <label>{Strings.Experience} <span>{showPersonDetail?.experiecne} {Strings.Year} </span></label>
-                </div >
-            )}
+            <UserOnChart userData={showPersonDetail} statusShow={showUserOnChart} error={error} />
         </>
     );
 }

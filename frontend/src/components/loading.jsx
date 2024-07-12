@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import "react-loading-skeleton/dist/skeleton.css"
-import Skeleton from "react-loading-skeleton";
+//import "react-loading-skeleton/dist/skeleton.css"
+//import Skeleton from "react-loading-skeleton";
 import { UserContext } from "../context/userContext";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Loading = () => {
     const { setIsLoading } = useContext(UserContext);

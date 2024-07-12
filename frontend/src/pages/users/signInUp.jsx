@@ -1,20 +1,20 @@
-import "../../css/signInUp.css";
+import "../../sass/signInUp.scss";
 import Login from "./login";
 import Register from "./register";
 import { UserContext } from "../../context/userContext";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Home from "../home";
-import { LanguageContext } from "../../context/languageContext";
-import '../../css/font.css'
+import '../../sass/font.css'
+import { PublicContext } from "../../context/publicContext";
 
 const SignInUp = () => {
-    const { login, setLogin, Msg, messageStatus, setMessageStatus, setHidden } = useContext(UserContext)
-    const { lang } = useContext(LanguageContext);
-    useEffect(() => {
-        setLogin(true)
-        setHidden(false)
-    }, [])
-
+    const { login, setLogin, Msg, messageStatus, setMessageStatus } = useContext(UserContext)
+    const { lang ,activeLink, setActiveLink  } = useContext(PublicContext);
+     
+    const handleLinkClick = (link) => {
+        setActiveLink(link);
+    }
+     
     return (
         <>
             <br />
@@ -22,8 +22,8 @@ const SignInUp = () => {
                 <div className="sign-form-container">
                     <div className="sign-form">
                         <div className="user-sign">
-                            <span className="sign" style={{ borderBottom: login ? 'solid 2px #376ce7' : 'solid 2px #363636', color: login ? '#175af7' : 'rgb(203 203 203)' }} onClick={() => { setLogin(true); setMessageStatus(false) }}> {lang ? 'Login' : 'ورود'}</span>
-                            <span className="sign" style={{ borderBottom: login ? 'solid 2px #363636' : 'solid 2px #376ce7', color: login ? 'rgb(203 203 203)' : '#175af7' }} onClick={() => { setLogin(false); setMessageStatus(false) }}> {lang ? 'Register' : 'ثبت نام'}</span>
+                            <span className={`sign ${activeLink === 'login' ? 'active' : ''}`} onClick={() => { handleLinkClick('login'); setLogin(true); setMessageStatus(false) }}> {lang ? 'Login' : 'ورود'}</span>
+                            <span className={`sign ${activeLink === 'Register' ? 'active' : ''}`}  onClick={() => { handleLinkClick('Register');setLogin(false);  setMessageStatus(false) }}> {lang ? 'Register' : 'ثبت نام'}</span>
                         </div>
                         {login ? <Login /> : <Register />}
                     </div>

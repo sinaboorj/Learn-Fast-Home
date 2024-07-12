@@ -1,4 +1,4 @@
-
+@import "variable.scss";
 .analysis{
     color: rgb(97, 97, 97);
     display: flex;
@@ -39,10 +39,16 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
+.chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px rgb(63, 63, 63);
+}
 .items-title {
     width: calc(100vw / 3 - 8px);
-    background: #acacac;
-    color: #000000;
+    background: $backgroundColor;
+    color: $primary-fontColor;
     border-radius: 5px;
     padding: 10px 25px;
     font-size: 14px;
@@ -51,6 +57,7 @@
     flex-direction: column;
     flex-grow: 1;
     text-align: justify;
+    border: solid 1px $home-mainObject-color;
 }
 .items {
     list-style-type: square;
@@ -58,7 +65,7 @@
     font-weight: 600;
     margin-bottom: 5px;
     text-align: -webkit-auto;
-    color: #031780;
+    color: $top-performence-title_Color;
 }
 .under-under-items {
     margin: 5px 18px 0px 0px;

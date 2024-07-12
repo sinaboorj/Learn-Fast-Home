@@ -1,3 +1,5 @@
+@import "variable.scss";
+
 .register-form{
     width: 100%;
     border: solid 1px #333333;
@@ -86,7 +88,7 @@
      color: #4b4a4a;
 }
 .input:focus{
-    outline: solid 1px #044ef5; 
+    outline: solid 1px $home-mainObject-color; 
     border-color: black;  
 }
 
@@ -97,14 +99,14 @@
     align-items: center;
 }
 .login-btn {
-    background-color: #575859;
+    background-color:$loginBtn;
     color: black;
     border: none;
     border-radius: 3px;
     height: 36px;
 }
 .register-btn{
-    background-color: #575859;
+    background-color: $loginBtn;
     color: black;
     padding: 3px;
     border: none; 
@@ -116,6 +118,8 @@
     font-size: 13px;
     padding: 10px 0px 13px;
     text-align: end;
+    font-weight: 400;
+    color: rgb(13, 110, 202);
 }
 
 @media only screen and (max-width:380px ){

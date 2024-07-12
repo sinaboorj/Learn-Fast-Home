@@ -1,3 +1,5 @@
+@import "variable.scss";
+
 .footer{
     background-color: black;
     margin: 20px;
@@ -8,12 +10,16 @@
     padding: 5px;
     font-size: 15px;
     border-top: solid 1px #68686833;
+    color: $primary-fontColor;
 }
 .insig-footer{
     border-radius: 50%;
-    box-shadow: 0px 0px 10px blue;
+    box-shadow: 0px 0px 10px $home-mainObject-color;
     padding: 12px;
-    border: solid 2px blue;
+    border: solid 2px $home-mainObject-color;
+}
+.icon-color{
+    color: $differentColor;
 }
 .contact{
     color: rgba(241, 241, 241, 0.54);
@@ -30,7 +36,7 @@
 }
 .planning-pic {
     width: 60px;
-    margin: 10px;
+    margin: 10px 10px 2px;
 }
 .contact-us{
     margin-bottom: 3px;
@@ -41,7 +47,7 @@
 }
 .about-sina{
     text-decoration: none;
-    color: rgb(13 110 202);
+    color: $primary-fontColor;
 }
 .left-footer {
     display: flex;
@@ -51,7 +57,7 @@
     color: #616161;
 }
 .left-footer h6{
-    font-size: 14px;
+    font-size: 11px;
 }
 
 @media only screen and (max-width:619px) {

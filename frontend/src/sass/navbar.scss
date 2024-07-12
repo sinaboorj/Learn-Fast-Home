@@ -1,3 +1,5 @@
+@import "variable.scss";
+
 .main-nav {
     display: flex;
     flex-direction: row;
@@ -36,29 +38,30 @@ div.main-nav li{
     text-decoration: none;
 }
 .active{
-    color: #0464f5;
+    color: $differentColor;
     font-weight: 500;
+    border-bottom: $differentColor solid 2px;
 }
 .diactive{
     color: rgba(241, 241, 241, 0.637);
 }
 .navlink:hover{
     transition: all .6s;
-    color: #0464f5;
+    color: $differentColor;
 }
 .log-item {
     padding: 1px 4px;
     margin: -2px 0px 0;
+    
 }
 .nav-logo {
     border-radius: 50%;
     padding: 4px;
-    box-shadow:  0px 0px 10px blue;
-    border: solid 2px #0464f5;
+    border: solid 2px $border-color-nav-logo;
 }
 .user-login {
     border-radius: 50%;
-    border: solid 2px #37bd3b;
+    border: solid 2px $home-mainObject-color;
     display: flex;
     flex-direction: row;
     width: 45px;
@@ -67,7 +70,7 @@ div.main-nav li{
     color: white;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0 10px #37bd3b;
+    box-shadow: 0 0 10px $differentColor;
     padding-bottom: 3px;
     margin-right: 6px;
 }
@@ -76,8 +79,21 @@ div.main-nav li{
 }
 .login-icon{
     font-size: 19px;
+    border-bottom: $backgroundColor solid 2px!important;
+    margin-top: 4px;
 }
 .nav-left a{
     text-decoration: none;
     margin-right: 6px;
+}
+
+@media (min-width:993px){
+    .main-nav {
+      display: flex;
+    }
+}
+  @media (max-width:992px){
+    .main-nav {
+      display: none;
+    }
 }

@@ -1,3 +1,5 @@
+@import "variable.scss";
+
 .login-container{
     display: flex;
     flex-direction: column;
@@ -21,7 +23,14 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     outline: solid 1px #262626;
-    color: #175af7;
+    color: $primary-fontColor;
+    font-weight: 200;
+    font-size: 15px;
+}
+.active{
+    color: $differentColor;
+    font-weight: 500;
+    border-bottom: $differentColor solid 2px;
 }
 .sign-form{
     display: flex;
