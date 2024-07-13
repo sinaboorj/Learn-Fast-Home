@@ -10,7 +10,6 @@ const PublicContextProvider = (props) => {
   const nav = useNavigate()
 
   //********************************* Save local storage ************************************* */
-  
   useEffect(() => {
     const url = window.location.href;// ست كردن رنگ در زمان رفرش شدن
 
@@ -19,11 +18,12 @@ const PublicContextProvider = (props) => {
     let currenturl = localStorage.getItem('currentURL')// رفتن به لينك قبل از رفرش شدن
   
     if (currenturl !== null) {
-      if (!currenturl.includes('/api/')) {
-        currenturl = '/'
-      } else {
+     
+      if (currenturl.includes('/api/')) {
         let myLink = currenturl.slice(0, currenturl.indexOf('/api/'));
         currenturl = currenturl.replace(myLink, '')
+      } else {
+        currenturl = '/'
       }
       nav(currenturl)
     } else {
