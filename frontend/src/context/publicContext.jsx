@@ -13,12 +13,18 @@ const PublicContextProvider = (props) => {
   
   useEffect(() => {
     const url = window.location.href;// ست كردن رنگ در زمان رفرش شدن
-    if (url === 'http://localhost:5173/api/login' && activeLink !== 'Register') setActiveLink('login')
+
+    if (url.includes('/api/login') && activeLink !== 'Register') setActiveLink('login')
     
     let currenturl = localStorage.getItem('currentURL')// رفتن به لينك قبل از رفرش شدن
   
     if (currenturl !== null) {
-      currenturl = currenturl.replace('http://localhost:5173', '')
+      if (!currenturl.includes('/api/')) {
+        currenturl = '/'
+      } else {
+        let myLink = currenturl.slice(0, currenturl.indexOf('/api/'));
+        currenturl = currenturl.replace(myLink, '')
+      }
       nav(currenturl)
     } else {
       nav('/')

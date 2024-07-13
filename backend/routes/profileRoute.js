@@ -9,7 +9,7 @@ profileRouter.get('/user/:userID?', authorization, profileController.get)
 profileRouter.post('/user-info', authorization, profileController.get_Level_No)
 profileRouter.put('/update/:userID?', authorization, profileController.updateUser)
 
-export default profileRouter  
+export default profileRouter   
 
 
 

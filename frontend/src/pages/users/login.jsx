@@ -9,15 +9,19 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import { PublicContext } from "../../context/publicContext";
+import loadingImage from '/sysImage/loading.gif';
 
 function Login() {
   const [isLoading, setIsLoading] = useState(false);
-  const { Msg, setMsg, messageStatus, setMessageStatus, schemaLoginError, setSchemaLoginError, setUserData } = useContext(UserContext);
+  const { Msg, setMsg, messageStatus, setMessageStatus, schemaLoginError, setSchemaLoginError, setUserData, backendUrl } = useContext(UserContext);
   const { setActiveLink } = useContext(PublicContext);
   const [password, setPassword] = useState('');
   const [loginEmail, setLoginEmail] = useState('');
   const [showPass, setShowPass] = useState({ type: 'password', status: true });
   const nav = useNavigate();
+  let url = window.location.href
+  url = url.slice(0, url.indexOf('/api/'))
+
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -37,7 +41,7 @@ function Login() {
     
     try {
       if (password !== '') {
-        const result = await axios.post("http://localhost:5500/api/login", loginUserData)
+        const result = await axios.post(`${backendUrl}/api/login`, loginUserData)
         
         if (result) {//Login successfully
           setMsg({ status: true, title: 'successfully', msg: 'Login successfully' });
@@ -49,22 +53,22 @@ function Login() {
             No: result.data.No,
             token: result.headers.authorization
           })
-//*********** برای اینکه بعد از لاگین به لینک قبل هدایت شود و رنگ لینک عوض شود  **********  */
+          //*********** برای اینکه بعد از لاگین به لینک قبل هدایت شود و رنگ لینک عوض شود  **********  */
           let perUrl = localStorage.getItem('previousURL')
           let Link = ''
           if (perUrl !== null) {
-            perUrl = perUrl.replace('http://localhost:5173', '') //
+            perUrl = perUrl.replace(url, '')
             if (perUrl !== '/') {
               Link = perUrl.replace('/api/', '')
             } else {
-              Link='home'
+              Link = 'home'
             }
             setActiveLink(Link)
             localStorage.setItem('activeLink', Link)
             nav(perUrl)
           } else {
             nav('/')
-          }
+         }
         }
       } else {
         setMsg({ status: false, title: 'Error', msg: 'Enter your password' })
@@ -113,7 +117,7 @@ function Login() {
 
           </form>
         </div>
-        {isLoading && <h6 style={{ color: '#0d6efd', textAlign: 'center' }}>Waiting... <img src="/sysImage/loading.gif" width={50} height={50} alt="Loading user" /></h6>}
+        {isLoading && <h6 style={{ color: '#0d6efd', textAlign: 'center' }}>Waiting... <img src={loadingImage} width={50} height={50} alt="Loading user" /></h6>}
         {/* *********************************** Login User Msg ********************************  */}
         {messageStatus && (
           <h6 style={{ color: Msg.status ? 'green' : 'red', marginTop: '20px', textAlign: 'center' }}>{Msg.title}</h6>

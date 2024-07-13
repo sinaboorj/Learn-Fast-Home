@@ -12,7 +12,7 @@ const UserContextProvider = (props) => {
   const [hidden, setHidden] = useState(false) //براي زماني كه ميخواهيم يك كاربر جديد را وريفاي كنيم و تمام صفحه شدن پيج وريفاي و مخفي شدن پيج فوتر و نوبار بالاي صفحه
   const [userData, setUserData] = useState();
   const [isLoading, setIsLoading] = useState(false);
-
+  const backendUrl = 'http://localhost:5500'
 
   //*********************************  read email, userID and token to local storage   ****************** */ 
   useEffect(() => {
@@ -39,7 +39,7 @@ const UserContextProvider = (props) => {
   const UserContextValue = {
     login, setLogin, Msg, setMsg, messageStatus, setMessageStatus,
     schemaLoginError, setSchemaLoginError, schemaRegisterError, setSchemaRegisterError,
-    hidden, setHidden, userData, setUserData, headers, level_No, isLoading, setIsLoading
+    hidden, setHidden, userData, setUserData, headers, level_No, isLoading, setIsLoading, backendUrl
   }
 
   return <UserContext.Provider value={UserContextValue}>{props.children} </UserContext.Provider>

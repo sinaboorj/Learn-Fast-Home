@@ -4,7 +4,7 @@ import Register from "./register";
 import { UserContext } from "../../context/userContext";
 import { useContext } from "react";
 import Home from "../home";
-import '../../sass/font.css'
+import '../../sass/font.scss'
 import { PublicContext } from "../../context/publicContext";
 
 const SignInUp = () => {

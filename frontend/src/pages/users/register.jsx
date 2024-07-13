@@ -11,7 +11,7 @@ import { faEyeSlash , faEye} from "@fortawesome/free-solid-svg-icons";
 
 function Register() {
   const [isLoading, setIsLoading] = useState(false);
-  const { Msg, setMsg, messageStatus, setMessageStatus, schemaRegisterError, setSchemaRegisterError } = useContext(UserContext)
+  const { Msg, setMsg, messageStatus, setMessageStatus, schemaRegisterError, setSchemaRegisterError, backendUrl } = useContext(UserContext)
   const [password, setPassword] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -36,7 +36,7 @@ function Register() {
    
     try {
       if (password !== '' && confirmPassword !== '') {
-        const result = await axios.post("http://localhost:5500/api/register", newUserData);
+        const result = await axios.post(`${backendUrl}/api/register`, newUserData);
         if (result) { setMsg(result.data); } //sendeing successfully
       } else {
         setMsg({ status: false, title: 'Error', msg: 'Enter your password' })

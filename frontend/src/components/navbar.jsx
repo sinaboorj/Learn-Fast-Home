@@ -18,6 +18,9 @@ const Navbar = () => {
     var userStatus = false;
     var firstStrEmail = userData?.email?.charAt(0)
     //**************************************************************************************** */
+   
+    let url = window.location.href
+    url = url.slice(0, url.indexOf('/api/'))
 
     const exit = () => {
         setUserData({});
@@ -28,7 +31,7 @@ const Navbar = () => {
 
     const login = () => { //برای رفتن به لینک قبل از لاگین
         const url = window.location.href;
-        if (url !== 'http://localhost:5173/api/login') localStorage.setItem('previousURL', url)
+        if (url !== `${url}/api/login`) localStorage.setItem('previousURL', url)
     }
 
     const handleLinkClick = (link) => {

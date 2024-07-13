@@ -10,12 +10,12 @@ const EmailVerify = () => {
     const [validationMsg, setValidationMsg] = useState('')
     const { userID, token } = useParams();
     const [isLoading, setIsLoading] = useState(true);
-    const {setHidden } = useContext(UserContext);
+    const {setHidden , backendUrl} = useContext(UserContext);
 
     useEffect(() => {
         const verifyEmailUrl = async () => {
             try {
-                const url = `http://localhost:5500/api/${userID}/mail-verification/${token}` //localhost:متغيير 
+                const url = `${backendUrl}/api/${userID}/mail-verification/${token}` //localhost:متغيير 
                 const result = await axios.put(url)
                
                 if (result) {        // تاييد ايميل 

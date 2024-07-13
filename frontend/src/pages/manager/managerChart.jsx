@@ -7,10 +7,10 @@ import UserOnChart from '../users/userOnChart';
 
 const ManagerChart = () => {
     const [showPersonDetail, setShowPersonDetail] = useState(false);
-    const { headers } = useContext(UserContext);
+    const { headers, backendUrl } = useContext(UserContext);
     const [showUserOnChart, setShowUserOnChart] = useState(false)
     const [error, setError] = useState(false)
-    
+
     const showUserChart = async (level, No, unit) => {
         let level_No = {
             level: level,
@@ -19,7 +19,7 @@ const ManagerChart = () => {
         };
           
         try {
-            const users = await axios.post(`http://localhost:5500/api/user-info`, level_No, { headers: headers })
+            const users = await axios.post(`${backendUrl}/api/user-info`, level_No, { headers: headers })
             setShowPersonDetail(users?.data)
             setShowUserOnChart(true)
         } catch (error) {

@@ -3,11 +3,11 @@ import { UserContext } from "../../context/userContext";
 import axios from "axios";
 
 const Profile = () => {
-    const { userData, headers } = useContext(UserContext);
- 
+    const { userData, headers, backendUrl } = useContext(UserContext);
+    
     try {
         const fetchData = async () => {
-            const result = await axios.get(`http://localhost:5500/api/user/${userData?.userID}`, { headers: headers })
+            const result = await axios.get(`${backendUrl}/api/user/${userData?.userID}`, { headers: headers })
             console.log('result', result?.data)
         }
         fetchData()

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import '../../sass/analysis.scss'
 import folder_img from '../../../public/sysImage/FY1.png'
-import '../../sass/font.css'
+import '../../sass/font.scss'
 import ManagerChart from '../manager/managerChart';
 import Strings from '../../helper/strings';
 import AnalysisChart from './analysisChart';
