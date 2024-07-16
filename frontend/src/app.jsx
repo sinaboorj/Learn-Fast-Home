@@ -12,6 +12,7 @@ import Profile from "./pages/users/profile";
 import DropDownMenu from "./components/dropDownMenu";
 import PublicContextProvider from "./context/publicContext";
 import "./sass/main.scss";
+import './sass/font.scss'
 
 const App = () => {
   return (

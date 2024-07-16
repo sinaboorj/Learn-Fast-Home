@@ -2,9 +2,9 @@ import { createContext, useEffect, useState } from "react";
 import Strings from "../helper/strings";
 import { useNavigate } from "react-router-dom";
 
-export const PublicContext = createContext(null) 
+export const PublicContext = createContext() 
 //********************************************** Language Context ****************************** */
-const PublicContextProvider = (props) => {
+const PublicContextProvider = ({children}) => {
 
   const [lang, setLang] = useState(JSON.parse(localStorage.getItem('language')) ?? true)
   const [activeLink, setActiveLink] = useState(localStorage.getItem('activeLink') ?? 'home'); //برای ثابت ماندن رنگ لینک انتخابی
@@ -52,7 +52,7 @@ const PublicContextProvider = (props) => {
     lang, setLang, activeLink, setActiveLink
   }
     
-  return <PublicContext.Provider value={PublicContextValue}>{props.children}</PublicContext.Provider>
+  return <PublicContext.Provider value={PublicContextValue}>{children}</PublicContext.Provider>
 }
  
 export default PublicContextProvider;

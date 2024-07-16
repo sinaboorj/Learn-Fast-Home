@@ -1,9 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 
-export const UserContext=createContext(null)
+export const UserContext=createContext()
 
 //********************************************** User Context ****************************** */
-const UserContextProvider = (props) => {
+const UserContextProvider = ({ children }) => {
   const [login, setLogin] = useState(true)
   const [Msg, setMsg] = useState({});
   const [messageStatus, setMessageStatus] = useState(false);
@@ -23,7 +23,7 @@ const UserContextProvider = (props) => {
 
   //*********************************  add email, userID and token to local storage   ****************** */ 
   useEffect(() => {
-      if (userData !== undefined) localStorage.setItem('userData', JSON.stringify(userData));
+    if (userData !== undefined) localStorage.setItem('userData', JSON.stringify(userData));
   }, [userData]);
 
   const headers = {
@@ -43,7 +43,7 @@ const UserContextProvider = (props) => {
     hidden, setHidden, userData, setUserData, headers, level_No, isLoading, setIsLoading, backendUrl
   }
 
-  return <UserContext.Provider value={UserContextValue}>{props.children} </UserContext.Provider>
+  return <UserContext.Provider value={UserContextValue}>{children} </UserContext.Provider>
 }
 export default UserContextProvider
 
