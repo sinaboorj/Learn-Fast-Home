@@ -7,20 +7,29 @@ body{
     padding: 0;
 } 
 div#root {
-    background-color: black;
+    background-color: $backgroundColor;
 }
 
 ::-webkit-scrollbar {
     width: 10px;
-  }
+}
 
   /* Track */
 ::-webkit-scrollbar-track {
     background: rgb(206, 206, 206); 
-  }
+}
    
   /* Handle */
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: #797979; 
     cursor: pointer;
-  }
+}
+.first-isLoading{
+  color: $primary-fontColor;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}

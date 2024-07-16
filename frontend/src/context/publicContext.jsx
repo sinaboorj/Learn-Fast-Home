@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const PublicContext = createContext(null) 
 //********************************************** Language Context ****************************** */
 const PublicContextProvider = (props) => {
+
   const [lang, setLang] = useState(JSON.parse(localStorage.getItem('language')) ?? true)
   const [activeLink, setActiveLink] = useState(localStorage.getItem('activeLink') ?? 'home'); //برای ثابت ماندن رنگ لینک انتخابی
   const nav = useNavigate()

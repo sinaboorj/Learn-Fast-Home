@@ -11,25 +11,26 @@ import Analysis from "./pages/analysis/analysis";
 import Profile from "./pages/users/profile";
 import DropDownMenu from "./components/dropDownMenu";
 import PublicContextProvider from "./context/publicContext";
+import "./sass/main.scss";
 
 const App = () => {
   return (
     <>
       <UserContextProvider>
         <PublicContextProvider>
-        <DropDownMenu />
+          <DropDownMenu />
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route index element={<Home />} />
             <Route path="/api/dashboard" element={<Dashboard />} />
             <Route path="/api/about-hossein-zarei" element={<About />} />
             <Route path="/api/login" element={<SignInUp />} />
             <Route path="/api/statistics" element={<Analysis />} />
-            <Route path="/api/profile/:userID" element={<Profile /> } />
+            <Route path="/api/profile/:userID" element={<Profile />} />
             <Route path="/api/:userID/mail-verification/:token" element={<EmailVerify />} />
           </Routes>
           <Footer />
-          </PublicContextProvider>
+        </PublicContextProvider>
       </UserContextProvider>
     </>
   );

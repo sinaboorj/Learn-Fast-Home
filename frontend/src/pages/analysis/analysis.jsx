@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import '../../sass/analysis.scss'
 import folder_img from '../../../public/sysImage/FY1.png'
-import '../../sass/font.scss'
 import ManagerChart from '../manager/managerChart';
 import Strings from '../../helper/strings';
 import AnalysisChart from './analysisChart';
@@ -60,6 +59,7 @@ const Analysis = () => {
                                    <li className='under-under-items'>{Strings.Analysis_job_7_1} </li>
                                    <li className='under-under-items'>{Strings.Analysis_job_7_2} </li>
                                    <li className='under-under-items'>{Strings.Analysis_job_7_3} </li>
+                                   <li className='under-under-items'>{Strings.Analysis_job_7_4} </li>
                               </ul>
                          </div>
                     

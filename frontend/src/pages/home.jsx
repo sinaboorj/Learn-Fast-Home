@@ -12,14 +12,16 @@ import Strings from '../helper/strings'
 import { PublicContext } from '../context/publicContext'
 
 const Home = () => {
-    const { lang } = useContext(PublicContext);
+    const { lang, setActiveLink } = useContext(PublicContext)
 
+    const handleLinkClick = (link) => {
+        setActiveLink(link);
+    }
+    
     return (
         <>
             <br /><br /><br />
             <div className="c-plan-container">
-              
-                    
                 <div className='logo-format'>
                 <div className='c-plan'>
                 <Link to='/'> <div className='c-plan-pic-border'>< img src={lang ? RepairsEn : RepairsFa} className="c-plan-pic" alt="c-plan frontend" /></div></Link>
@@ -39,7 +41,7 @@ const Home = () => {
                     </div>
 
                     <div className='c-plan'>
-                        <Link to='/api/statistics'><div className='c-plan-pic-border'> < img src={lang ? AnalysisEn : AnalysisFa} className="c-plan-pic" alt="c-plan database" /></div></Link>
+                        <Link to='/api/statistics'><div onClick={() => handleLinkClick('statistics')} className='c-plan-pic-border'> < img src={lang ? AnalysisEn : AnalysisFa} className="c-plan-pic" alt="c-plan database" /></div></Link>
                         <div className='home-items' style={{ direction: lang ? 'ltr' : 'rtl' }}>
                             <li className='c-plan-item'>{Strings.Analysis_title_1}</li>
                             <li className='c-plan-item'>{Strings.Analysis_title_2}</li>

@@ -19,6 +19,7 @@ function Login() {
   const [loginEmail, setLoginEmail] = useState('');
   const [showPass, setShowPass] = useState({ type: 'password', status: true });
   const nav = useNavigate();
+
   let url = window.location.href
   url = url.slice(0, url.indexOf('/api/'))
 
@@ -38,13 +39,19 @@ function Login() {
       email: data.email,
       password: data.password,
     };
-    
-    try {
-      if (password !== '') {
+
+    if (password === '') {//Check password status
+      setMsg({ status: false, title: 'Error', msg: 'Enter your password' });
+      setMessageStatus(true);
+      setIsLoading(false); setPassword('');
+    } else {
+
+      try {// check login status
         const result = await axios.post(`${backendUrl}/api/login`, loginUserData)
-        
+
         if (result) {//Login successfully
           setMsg({ status: true, title: 'successfully', msg: 'Login successfully' });
+
           setUserData({
             email: result.data.email,
             userID: result.data.userID,
@@ -53,6 +60,9 @@ function Login() {
             No: result.data.No,
             token: result.headers.authorization
           })
+          setIsLoading(false); setPassword('');
+          setMessageStatus(true);
+
           //*********** برای اینکه بعد از لاگین به لینک قبل هدایت شود و رنگ لینک عوض شود  **********  */
           let perUrl = localStorage.getItem('previousURL')
           let Link = ''
@@ -68,26 +78,17 @@ function Login() {
             nav(perUrl)
           } else {
             nav('/')
+          }
          }
-        }
-      } else {
-        setMsg({ status: false, title: 'Error', msg: 'Enter your password' })
-      }
-      setMessageStatus(true);
-    }
-    catch (err) {
-      if (err.response.status === 500) setMsg({ status: false, title: 'Error', msg: 'Something is failed' }); //Internal Service Error 
+      } catch (err) {
+        setIsLoading(false); setMessageStatus(true);
+        err?.response?.data?.msg !== undefined ? setMsg(err.response?.data)  : setMsg( {status: false, title: 'Error', msg:err.message })
+        setPassword('');
       
-      if (err.response.status === 404) {
-        setMsg({ status: false, title: 'Error', msg: 'ERR_BAD_REQUEST : URL Not Found' });  //Url sending Error  or  ERR_BAD_REQUEST 
       }
-      else {
-        setMsg(err.response.data); //Login Error
-      }
-      setMessageStatus(true);
     }
-    setIsLoading(false); setPassword('');
-  };
+    
+  }
 
   //**************************************************** Login Form ************************************ */
   return (

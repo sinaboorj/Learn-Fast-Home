@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import "../../sass/register.scss";
 import axios from "axios";
 import { UserContext } from "../../context/userContext";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEyeSlash , faEye} from "@fortawesome/free-solid-svg-icons";
 
@@ -17,7 +17,7 @@ function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPass, setShowPass] = useState({ type: 'password', status: true });
 
-  //const navigate = useNavigate()
+  const navigate = useNavigate()
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.string().min(6).required(), //password: yup.string().min(6).matches(/[A-Z]+/).matches(/[a-z]+/).matches(/\d*/).matches(/[!,@,#,$,&,*]+/).required(),
